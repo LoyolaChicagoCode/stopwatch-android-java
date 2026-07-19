@@ -67,8 +67,7 @@ In IntelliJ: `Run > Run app`
 
 ## Unit tests including out-of-emulator system tests using Robolectric
 
-In Android Studio, use `Tools > SDK Manager` to install Android 6.0 (API level 23) for the Robolectric tests to work (skip this step if API level 23 is already installed).
-Then, in the *Android* view, right-click on `edu.luc.etl.cs313...test (test)` and choose `Run 'Tests in 'test''`.
+In IntelliJ IDEA in the *Android* view under app => java, right-click on `edu.luc.etl.cs313...test (test)` and choose `Run 'Tests in 'test''`.
 
 You can also use Gradle:
 
@@ -80,9 +79,7 @@ You can view the resulting test reports in HTML by opening this file in your bro
 
 ## Android instrumentation tests (in-emulator/device system tests)
 
-In Android Studio:
-
-* In the *Android* view, right-click on `edu.luc.etl.cs313...android (androidTest)`, then choose `Run 'Tests in 'edu.luc.et...'`
+In IntelliJ IDEA in the *Android* view under app => java, right-click on `edu.luc.etl.cs313...android (androidTest)`, then choose `Run 'Tests in 'edu.luc.et...'`
 
 You can also use Gradle:
 
