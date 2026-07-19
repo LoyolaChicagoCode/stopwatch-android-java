@@ -1,8 +1,8 @@
 package edu.luc.etl.cs313.android.simplestopwatch.android;
 
-import androidx.test.filters.SmallTest;
-import androidx.test.rule.ActivityTestRule;
+import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.filters.SmallTest;
 
 import org.junit.Rule;
 import org.junit.runner.RunWith;
@@ -15,6 +15,12 @@ import edu.luc.etl.cs313.android.simplestopwatch.test.android.AbstractStopwatchA
  * IMPORTANT: project must export JUnit 4 to make it available on the
  * device.
  *
+ * Uses ActivityScenarioRule instead of the deprecated ActivityTestRule.
+ * Since the abstract test superclass calls getActivity() repeatedly (including
+ * from within runOnUiThread lambdas), getActivity() re-resolves the current
+ * Activity reference via ActivityScenario.onActivity() each time, per the
+ * recommended migration pattern for callers that need direct Activity access.
+ *
  * @author laufer
  * @see "https://developer.android.com/training/testing/ui-testing/"
  */
@@ -23,11 +29,13 @@ import edu.luc.etl.cs313.android.simplestopwatch.test.android.AbstractStopwatchA
 public class StopwatchActivityTest extends AbstractStopwatchActivityTest {
 
     @Rule
-    public final ActivityTestRule<StopwatchAdapter> activityRule =
-            new ActivityTestRule<>(StopwatchAdapter.class);
+    public final ActivityScenarioRule<StopwatchAdapter> activityRule =
+            new ActivityScenarioRule<>(StopwatchAdapter.class);
 
     @Override
     protected StopwatchAdapter getActivity() {
-        return activityRule.getActivity();
+        final StopwatchAdapter[] holder = new StopwatchAdapter[1];
+        activityRule.getScenario().onActivity(activity -> holder[0] = activity);
+        return holder[0];
     }
 }

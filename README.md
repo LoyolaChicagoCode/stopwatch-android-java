@@ -51,7 +51,6 @@ Android application.  The original java code can be found
     * Instrumentation testing
 * Mock-based testing
 * Testcase Superclass pattern (uses Template Method pattern)
-* Test coverage
 
 # Setting up the Environment
 
@@ -78,16 +77,6 @@ You can also use Gradle:
 You can view the resulting test reports in HTML by opening this file in your browser:
 
     app/build/reports/tests/testDebugUnitTest/index.html
-
-## Unit test code coverage
-
-In Gradle:
-
-    $ ./gradlew jacocoTestDebugUnitTestReport
-
-You can view the resulting test reports in HTML by opening this file in your browser:
-
-    app/build/reports/jacoco/jacocoTestDebugUnitTestReport/html/index.html
 
 ## Android instrumentation tests (in-emulator/device system tests)
 
